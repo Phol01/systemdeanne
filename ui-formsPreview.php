@@ -179,10 +179,15 @@ $result = $conn->query($sql);
                                 </thead>
                                 <tbody>
                                 <?php
-                                $query = "SELECT * FROM activityform;";
-                                $sql = mysqli_query($conn, $query);
-                                while ($row = mysqli_fetch_array($sql)) {
-                                    ?>
+                                    $query = "SELECT * FROM activityform;";
+                                    $sql = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($sql)) {
+                                        // Convert start_date and end_date to full date format with month name
+                                        $startDateFormatted = date("F j, Y", strtotime($row["start_date"]));
+                                        $endDateFormatted = date("F j, Y", strtotime($row["end_date"]));
+                                 ?>
+    
+                                
                                     <tr>
                                         <td><?php echo $row["no"]; ?></td>
                                         <td><?php echo $row["activity_title"]; ?></td>
@@ -190,7 +195,7 @@ $result = $conn->query($sql);
                                         <td><?php echo $row["program"]; ?></td>
                                         <td><?php echo $row["partner"]; ?></td>
                                         <td><?php echo $row["partner_name"]; ?></td>
-                                        <td><?php echo $row["start_date"] . ' to ' . $row["end_date"]; ?></td> <!-- Display start_date and end_date as one column -->
+                                        <td><?php echo $startDateFormatted . ' to ' . $endDateFormatted; ?></td> 
                                         <td>
                                         </td>
                                     </tr>
