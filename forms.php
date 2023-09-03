@@ -19,7 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $activity_title = $_POST["activityName"];
     $college = $_POST["department"];
     $program = $_POST["program"];
-    $partner_name = $_POST["partner"];
+    $partner = $_POST["partner"];
+    $start_date = $_POST["start_date"];
+    $end_date = $_POST["end_date"];
+    // $partner_name = $_POST["partner_name"]; partner_name  '$partner_name', 
+    // $roles = $_POST["roles"]; '$roles', roles,
+    $rationale = $_POST["rationale"];
+    $objectives = $_POST["objectives"];
+    $budget_source = $_POST["budget"];
     
     // Check if the "partnerType" field is set and not empty
     if (isset($_POST["partnerType"]) && !empty($_POST["partnerType"])) {
