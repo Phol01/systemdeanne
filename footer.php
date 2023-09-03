@@ -464,7 +464,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fetchPartners("local", partnerDropdown);
         }
     });
-
+ 
     internationalRadio.addEventListener("change", function () {
         if (internationalRadio.checked) {
             // Call a function to fetch international partners and update the dropdown

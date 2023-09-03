@@ -18,16 +18,14 @@ $formSubmitted = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $activity_title = $_POST["activityName"];
     $college = $_POST["department"];
-    $program = $_POST["program"];
+    $program = isset($_POST["program"]) ? $_POST["program"] : '';
     $partner = $_POST["partner"];
     $start_date = $_POST["start_date"];
     $end_date = $_POST["end_date"];
-    // $partner_name = $_POST["partner_name"]; partner_name  '$partner_name', 
-    // $roles = $_POST["roles"]; '$roles', roles,
     $rationale = $_POST["rationale"];
     $objectives = $_POST["objectives"];
     $budget_source = $_POST["budget"];
-    
+
     // Check if the "partnerType" field is set and not empty
     if (isset($_POST["partnerType"]) && !empty($_POST["partnerType"])) {
         $partner_type = $_POST["partnerType"];
@@ -36,23 +34,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $partner_type = ""; // You can set a default value or handle the error as needed
     }
 
-    // Insert the data into the database
-    $sql = "INSERT INTO activityform (activity_title, college, program, partner_name, partner) VALUES (?, ?, ?, ?, ?)";
+    // Check if the "program" field is not empty
+    if (!empty($program)) {
+        // Insert the data into the database
+        $sql = "INSERT INTO activityform (activity_title, college, program, partner_name, partner, start_date, end_date, rationale, objectives, budget_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // Prepare the SQL statement using a prepared statement
-    $stmt = $conn->prepare($sql);
+        // Prepare the SQL statement using a prepared statement
+        $stmt = $conn->prepare($sql);
 
-    // Bind parameters to the prepared statement
-    $stmt->bind_param("sssss", $activity_title, $college, $program, $partner_name, $partner_type);
+        // Bind parameters to the prepared statement
+        $stmt->bind_param("ssssssssss", $activity_title, $college, $program, $partner, $partner_type, $start_date, $end_date, $rationale, $objectives, $budget_source);
 
-    if ($stmt->execute()) {
-        $formSubmitted = true; // Set the flag to true if the form submission was successful
+        if ($stmt->execute()) {
+            $formSubmitted = true; // Set the flag to true if the form submission was successful
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        // Close the prepared statement
+        $stmt->close();
     } else {
-        echo "Error: " . $stmt->error;
+        echo "Error: 'program' field cannot be empty.";
     }
-
-    // Close the prepared statement
-    $stmt->close();
 }
 
 // Check if the form was successfully submitted and then redirect to ui-formsPreview.php

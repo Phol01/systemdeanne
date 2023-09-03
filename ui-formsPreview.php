@@ -1,24 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <?php
-    // Database connection details
-    $db_host = "localhost"; // Replace with your database host
-    $db_username = "root"; // Replace with your database username
-    $db_password = ""; // Replace with your database password
-    $db_name = "unilink"; // Replace with your database name
+// Database connection details
+$db_host = "localhost"; // Replace with your database host
+$db_username = "root"; // Replace with your database username
+$db_password = ""; // Replace with your database password
+$db_name = "unilink"; // Replace with your database name
 
-    // Connect to the database
-    $conn = new mysqli($db_host, $db_username, $db_password, $db_name);
+// Connect to the database
+$conn = new mysqli($db_host, $db_username, $db_password, $db_name);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // SQL query to fetch data from the table
-    $sql = "SELECT * FROM activityform";
-    $result = $conn->query($sql);
+// SQL query to fetch data from the table
+$sql = "SELECT * FROM activityform";
+$result = $conn->query($sql);
 ?>
 
 <head>
@@ -53,10 +53,10 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <img src="..\Unilink\BSU.png" height="45" width="50"> 
+                <img src="..\Unilink\BSU.png" height="45" width="50">
                 <div class="sidebar-brand-text mx-3">UNILINK</div>
             </a>
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -79,7 +79,6 @@
                 </a>
             </li>
             <hr class="sidebar-divider">
-
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -105,34 +104,34 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                             aria-labelledby="searchDropdown">
+                            <form class="form-inline mr-auto w-100 navbar-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small"
+                                           placeholder="Search for..." aria-label="Search"
+                                           aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
+                        </div>
                         </li>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
-                                    src="imgs/undraw_profile.svg">
+                                     src="imgs/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="ui-profile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -152,123 +151,122 @@
 
                 <!-- End of Topbar -->
                 <div class="container-fluid">
-                     <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h3 class="h3 mb-0 text-gray-800">Activity Management</h3>
-                    <div class="d-flex">
-                        <a class="btn btn-primary rounded-fill mr-2" href="#" role="button">
-                            <i class="fas fa-filter"></i> Filter
-                        </a>
-                        <a class="btn btn-primary rounded-fill" href="ui-forms.php" role="button">
-                            <i class="fas fa-plus"></i> Create Activity
-                        </a>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h3 mb-0 text-gray-800">Activity Management</h3>
+                        <div class="d-flex">
+                            <a class="btn btn-primary rounded-fill mr-2" href="#" role="button">
+                                <i class="fas fa-filter"></i> Filter
+                            </a>
+                            <a class="btn btn-primary rounded-fill" href="ui-forms.php" role="button">
+                                <i class="fas fa-plus"></i> Create Activity
+                            </a>
+                        </div>
                     </div>
-                </div>
-                        <div class="card">
+                    <div class="card">
                         <div class="table-responsive">
-                          <table class="table table-hover">
-                            <thead>
-        
-                              <tr>
-                                <th>#</th>
-                                <th>Activity Title</th>
-                                <th>College</th>
-                                <th>Program</th>
-                                <th>Partner</th>
-                                <th>Partner Name</th>
-                                <th>Duration</th>
-                                <th>Action</th>
-                            </tr>
-                            <tbody>
-                            <?php
+                            <table class="table table-hover">
+                                <thead>
+
+                                <tr>
+                                    <th>#</th>
+                                    <th>Activity Title</th>
+                                    <th>College</th>
+                                    <th>Program</th>
+                                    <th>Partner</th>
+                                    <th>Partner Name</th>
+                                    <th>Duration</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
                                 $query = "SELECT * FROM activityform;";
                                 $sql = mysqli_query($conn, $query);
                                 while ($row = mysqli_fetch_array($sql)) {
-                                ?>
-                                <tr>
-                                    <td><?php echo $row["no"]; ?></td>
-                                    <td><?php echo $row["activity_title"]; ?></td>
-                                    <td><?php echo $row["college"]; ?></td>
-                                    <td><?php echo $row["program"]; ?></td>
-                                    <td><?php echo $row["partner"]; ?></td>
-                                    <td><?php echo $row["partner_name"]; ?></td>
-                                    <td><?php echo $row["duration"]; ?></td>
-                                    <td>
-                                    </td>
-                                </tr>
-                                <?php
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $row["no"]; ?></td>
+                                        <td><?php echo $row["activity_title"]; ?></td>
+                                        <td><?php echo $row["college"]; ?></td>
+                                        <td><?php echo $row["program"]; ?></td>
+                                        <td><?php echo $row["partner"]; ?></td>
+                                        <td><?php echo $row["partner_name"]; ?></td>
+                                        <td><?php echo $row["start_date"] . ' to ' . $row["end_date"]; ?></td> <!-- Display start_date and end_date as one column -->
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <?php
                                 }
                                 ?>
 
-                              <?php
-    
-                              ?>
-                            </thead>
-                            </tbody>
-                          </table>
-                </div>
-                </div>
-              </div>
+                                <?php
 
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Developed by Unilink 2023</span>
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
+
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Developed by Unilink 2023</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
 
-</body>
+    </body>
 
 </html>
