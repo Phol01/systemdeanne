@@ -37,6 +37,9 @@ $result = $conn->query($sql);
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -67,7 +70,7 @@ $result = $conn->query($sql);
                     <span>Dashboard</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="ui-formsPreview.php">
                     <i class="fas fa-fw fa-calendar"></i>
                     <span>Activity Management</span></a>
@@ -163,52 +166,64 @@ $result = $conn->query($sql);
                         </div>
                     </div>
                     <div class="card">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                             <table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
-
-                                <tr>
-                                    <th>#</th>
-                                    <th>Activity Title</th>
-                                    <th>College</th>
-                                    <th>Program</th>
-                                    <th>Partner</th>
-                                    <th>Partner Name</th>
-                                    <th>Duration</th>
-                                </tr>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start date</th>
+                                        <th>Salary</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                                    $query = "SELECT * FROM activityform;";
-                                    $sql = mysqli_query($conn, $query);
-                                    while ($row = mysqli_fetch_array($sql)) {
-                                        // Convert start_date and end_date to full date format with month name
-                                        $startDateFormatted = date("F j, Y", strtotime($row["start_date"]));
-                                        $endDateFormatted = date("F j, Y", strtotime($row["end_date"]));
-                                 ?>
-    
-                                
                                     <tr>
-                                        <td><?php echo $row["no"]; ?></td>
-                                        <td><?php echo $row["activity_title"]; ?></td>
-                                        <td><?php echo $row["college"]; ?></td>
-                                        <td><?php echo $row["program"]; ?></td>
-                                        <td><?php echo $row["partner"]; ?></td>
-                                        <td><?php echo $row["partner_name"]; ?></td>
-                                        <td><?php echo $startDateFormatted . ' to ' . $endDateFormatted; ?></td> 
-                                        <td>
-                                        </td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>2011-04-25</td>
+                                        <td>$320,800</td>
                                     </tr>
-                                    <?php
-                                }
-                                ?>
-
-                                <?php
-
-                                ?>
-                                </tbody>
+                                    <tr>
+                                        <td>Garrett Winters</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>63</td>
+                                        <td>2011-07-25</td>
+                                        <td>$170,750</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ashton Cox</td>
+                                        <td>Junior Technical Author</td>
+                                        <td>San Francisco</td>
+                                        <td>66</td>
+                                        <td>2009-01-12</td>
+                                        <td>$86,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cedric Kelly</td>
+                                        <td>Senior Javascript Developer</td>
+                                        <td>Edinburgh</td>
+                                        <td>22</td>
+                                        <td>2012-03-29</td>
+                                        <td>$433,060</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Airi Satou</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>33</td>
+                                        <td>2008-11-28</td>
+                                        <td>$162,700</td>
+                                    </tr>
+                                    </tfoot>
                             </table>
                         </div>
+                    </div>
                     </div>
                 </div>
 
@@ -271,6 +286,9 @@ $result = $conn->query($sql);
         <!-- Page level custom scripts -->
         <script src="js/demo/chart-area-demo.js"></script>
         <script src="js/demo/chart-pie-demo.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
 
     </body>
 

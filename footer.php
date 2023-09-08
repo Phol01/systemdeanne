@@ -3,6 +3,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="ckeditor/build/ckeditor.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+    
+
     <script>
     $(document).ready(function() {
         var programOptions = {
@@ -252,11 +259,15 @@
         const nextStep3Button = document.getElementById("nextStep3");
         const prevStep4Button = document.getElementById("prevStep4");
         const nextStep4Button = document.getElementById("nextStep4");
+        const prevStep5Button = document.getElementById("prevStep5");
+        const nextStep5Button = document.getElementById("nextStep5");
+        const prevStep6Button = document.getElementById("prevStep6");
+        const nextStep6Button = document.getElementById("nextStep6");
         const prevStep1Button = document.getElementById("prevStep1");
         const submitButton = document.querySelector("input[type='submit']");
 
         let currentStep = 1;
-        const totalSteps = 4;
+        const totalSteps = 6;
 
         // Function to update the progress bar
         function updateProgressBar() {
@@ -309,6 +320,37 @@
                 alert("Please fill in all required fields.");
             }
         });
+        nextStep3Button.addEventListener("click", function() {
+            if (validateStep("step3")) {
+                currentStep = 4;
+                updateProgressBar();
+                step3.style.display = "none";
+                step4.style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+        nextStep4Button.addEventListener("click", function() {
+            if (validateStep("step4")) {
+                currentStep = 5;
+                updateProgressBar();
+                step4.style.display = "none";
+                step5.style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+        nextStep5Button.addEventListener("click", function() {
+            if (validateStep("step5")) {
+                currentStep = 6;
+                updateProgressBar();
+                step5.style.display = "none";
+                step6.style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+
 
         // Previous button click event handlers
         prevStep2Button.addEventListener("click", function() {
@@ -332,6 +374,19 @@
             document.getElementById("step3").style.display = "block";
         });
 
+        prevStep5Button.addEventListener("click", function() {
+            currentStep = 4;
+            updateProgressBar();
+            document.getElementById("step5").style.display = "none";
+            document.getElementById("step4").style.display = "block";
+        });
+        prevStep6Button.addEventListener("click", function() {
+            currentStep = 5;
+            updateProgressBar();
+            document.getElementById("step6").style.display = "none";
+            document.getElementById("step5").style.display = "block";
+        });
+
         prevStep1Button.addEventListener("click", function() {
             currentStep = 1;
             updateProgressBar();
@@ -348,7 +403,7 @@
 
         // Submit button click event handler
         submitButton.addEventListener("click", function(event) {
-            if (!validateStep("step3")) {
+            if (!validateStep("step5")) {
                 event.preventDefault();
                 alert("Please fill in all required fields.");
             }
@@ -360,42 +415,42 @@
         var totals = document.querySelectorAll(".total");
 
         // Add input event listeners to quantity and price inputs
-        document.querySelectorAll(".quantity, .price").forEach(function (input) {
-            input.addEventListener("input", function () {
-                updateSubtotal(this);
-                updateTotal();
-            });
-        });
+        // document.querySelectorAll(".quantity, .price").forEach(function (input) {
+        //     input.addEventListener("input", function () {
+        //         updateSubtotal(this);
+        //         updateTotal();
+        //     });
+        // });
 
-        function updateSubtotal(input) {
-            var row = input.parentElement.parentElement;
-            var priceValue = parseFloat(row.querySelector(".price").value);
-            var quantityValue = parseFloat(row.querySelector(".quantity").value);
-            row.querySelector(".subtotal").innerHTML = (quantityValue * priceValue).toFixed(2);
-        }
+        // function updateSubtotal(input, q) {
+        //     var row = input.parentElement.parentElement;
+        //     var priceValue = parseFloat(row.querySelector(".price"+q).value);
+        //     var quantityValue = parseFloat(row.querySelector(".quantity"+q).value);
+        //     row.querySelector(".subtotal"+q).innerHTML = (quantityValue * priceValue).toFixed(2);
+        // }
 
-        function updateTotal() {
-            var total = 0;
-            totals.forEach(function (subtotal) {
-                total += parseFloat(subtotal.innerHTML);
-            });
-            document.getElementById("grand-total").innerHTML = total.toFixed(2);
-        }
+        // function updateTotal() {
+        //     var total = 0;
+        //     totals.forEach(function (subtotal) {
+        //         total += parseFloat(subtotal.innerHTML);
+        //     });
+        //     document.getElementById("grand-total").innerHTML = total.toFixed(2);
+        // }
 
-        // Initial calculation on page load
-        updateTotal();
+        // // Initial calculation on page load
+        // updateTotal();
 
-        function updateSubtotal(input) {
-        var row = input.parentElement.parentElement;
-        var priceValue = parseFloat(row.querySelector(".price").value);
-        var quantityValue = parseFloat(row.querySelector(".quantity").value);
+        // function updateSubtotal(input) {
+        // var row = input.parentElement.parentElement;
+        // var priceValue = parseFloat(row.querySelector(".price").value);
+        // var quantityValue = parseFloat(row.querySelector(".quantity").value);
 
-        // Check if the values are valid numbers before performing calculations
-        if (!isNaN(priceValue) && !isNaN(quantityValue)) {
-            row.querySelector(".subtotal").innerHTML = (quantityValue * priceValue).toFixed(2);
-        } else {
-            row.querySelector(".subtotal").innerHTML = "0.00"; // Set a default value or display an error message.
-        }
+        // // Check if the values are valid numbers before performing calculations
+        // if (!isNaN(priceValue) && !isNaN(quantityValue)) {
+        //     row.querySelector(".subtotal").innerHTML = (quantityValue * priceValue).toFixed(2);
+        // } else {
+        //     row.querySelector(".subtotal").innerHTML = "0.00"; // Set a default value or display an error message.
+        // }
     }
 
     </script>
@@ -493,9 +548,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
+<script>
+ClassicEditor
+    .create(document.querySelector('#editor'))
+    .catch(error =>{
+        console.error(error);
+    });
+
+    ClassicEditor
+    .create(document.querySelector('#editor1'))
+    .catch(error =>{
+        console.error(error);
+    });
+</script>
+<script>	
+    $(document).ready(function(){
+        $('#example').DataTable()
+});
+</script>
 
 
-    
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -513,5 +585,11 @@ document.addEventListener("DOMContentLoaded", function () {
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ mix('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+    
+
+
 </body>
 </html>

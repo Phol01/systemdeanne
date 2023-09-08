@@ -51,7 +51,7 @@
                     <i class="fas fa-fw fa-calendar"></i>
                     <span>Activity Management</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="ui-announcement.php">
                     <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Announcements</span></a>

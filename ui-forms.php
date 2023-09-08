@@ -10,9 +10,21 @@
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <style>
     /* Custom styles for the progress bar */
 .progress {
@@ -21,6 +33,9 @@
 }
 .progress-bar {
     height: 100%; /* Make sure the progress bar fills the container height */
+}
+.ck-editor__editable {
+    min-height: 200px;
 }
 </style>
 </head>
@@ -201,13 +216,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="startDate">Start Date</label>
-                                                    <input type="date" id="date" name="start_date" class="form-control" required>
+                                                    <input type="date" id="date" name="start_date" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="endDate">End Date</label>
-                                                    <input type="date" id="date" name="end_date" class="form-control" required>
+                                                    <input type="date" id="date" name="end_date" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -221,29 +236,49 @@
                                     <div class="form-group">
                                     <label for="partner">Project Leader and Project Member</label>
                                     <button type="button" class="btn btn-info" id="addRoleButton">
-                                        <i class="fas fa-plus"></i> Add Roles
+                                        <i class="fas fa-plus"></i> Add Roles   
                                     </button>
                                 </div>
 
                                 <div id="roleFormsContainer">
                                     <!-- Role forms will be added here dynamically -->
                                 </div>
+                            
 
-                                <div class="form-group">
-                                    <label for="rationale">Rationale of the Activity</label>
-                                    <textarea class="form-control" id="rationale" name="rationale" rows="3"></textarea>
-                                </div>
-                                <div class="form-group">
-                                <label for="objectives">Objectives (General and Specific)</label>
-                                <textarea class="form-control" id="objectives" name="objectives" rows="6"></textarea>
-                            </div>
-
-                            <div class="text-right mt-4">
+                                <div class="text-right mt-4">
                                         <button type="button" class="btn btn-secondary" id="prevStep3">Previous</button>
                                         <button type="button" class="btn btn-primary" id="nextStep3">Next</button>
+                                 </div>
+                                </div>
+                                <div id="step4" style="display: none;">
+                                <div class="form-group">
+                                    <label for="rationale">Rationale of the Activity</label>
+                                    <div>
+                                        <textarea class="form-control" id="editor" name="rationale" rows="3"></textarea>
+                                    </div>
+                                   
+                                </div>
+                                <div class="text-right mt-4">
+                                        <button type="button" class="btn btn-secondary" id="prevStep4">Previous</button>
+                                        <button type="button" class="btn btn-primary" id="nextStep4">Next</button>
                             </div>
                         </div>
-                            <div id="step4" style="display: none;">
+
+                                <div id="step5" style="display: none;">
+                                <div class="form-group">
+                                <label for="objectives">Objectives (General and Specific)</label>
+                                <textarea class="form-control" id="editor1" name="objectives" rows="6"></textarea>
+                            </div>
+                                
+                                <div class="text-right mt-4">
+                                        <button type="button" class="btn btn-secondary" id="prevStep5">Previous</button>
+                                        <button type="button" class="btn btn-primary" id="nextStep5">Next</button>
+                            </div>
+                        </div>
+
+                            
+                            
+                            <div id="step6" style="display: none;">
                                         <div class="form-group budget">
                                         <label for="budget">Budget Source</label>
                                         <select class="form-control" id="budget" name="budget">
@@ -251,26 +286,114 @@
                                             <option value="">Fund Partner Agency</option>
                                             <option value="">Fund of University</option>
                                         </select>
-                                        </div>  
-                                        <div class="row">
-                                            <table>
-                                                <tr>
-                                                    <td class="col-md-4"><input type="text" class="form-control outline" id="item" placeholder="Item Name">
-                                                    <td><input class="quantity form-control" type="number" onchange="quantityfunc(this)" placeholder="Quantity"></td>
-                                                    <td><input class="price form-control" type="number" onchange="pricefunc(this)" placeholder="Cost"></td>
-                                                    <td><span class="subtotal">0.00</span></td>
-                                                </tr>  
-                                            </table>
-                                            <!-- <div id="grand-total"></div> -->
-
                                         </div>
-                                        
+                                        <div>
+                                            <div class="row">
+                                                <table class="table table-responsive" style="width: 100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="col-md-3" style="font-size: 12.8px">Item Name</th>
+                                                            <th class="col-md-3" style="font-size: 12.8px">Quantity</th>
+                                                            <th class="col-md-3" style="font-size: 12.8px">Cost</th>
+                                                            <th class="col-md-3" style="text-align:center; font-size: 12.8px">Sub Total</th>
+                                                            <th class="" style="text-align:right; font-size: 12.8px"><button id="addRow" type="button" class="btn btn-success btn-circle btn-sm"><span class="material-symbols-outlined">add</span></button></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table">
+                                                        <tr>
+                                                            <td><input type="text" class="form-control outline" id="item" placeholder="Item Name"></td>
+                                                            <td><input class="quantity form-control" type="number" id="quantity1" onkeyup="quantityfunc(1)" placeholder="Quantity"></td>
+                                                            <td><input class="price form-control" type="number" id="cost1" onkeyup="pricefunc(1)" placeholder="Cost"></td>
+                                                            <td style="text-align:center"><span class="subtotal1" id="subtotal1">0.00</span></td>
+                                                            <td style="text-align:right"><button onclick="delRow(1)" id="delRow1" class="btn btn-danger btn-circle btn-sm" type="button"><span class="material-symbols-outlined">delete</span></button></td>
+                                                        </tr>  
+                                                    </tbody>
+                                                </table>
+                                                
+                                                
+                                                <!-- <div id="grand-total"></div> -->
+
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px; margin-left: 10px">
+                                            <div>Total: <span id="total">0</span></div>
+                                        </div>
+                                        <div class="row" style="display: flex; justify-content: center; margin-top: 20px">
+                                            
+                                        </div>
+
+                                        <script>
+                                            var i = 2;
+                                            var total = 0;
+                                            $('#addRow').click(function(){
+                                                var newrow = $('#table').append('<tr><td><input type="text" class="form-control outline" id="item" placeholder="Item Name"></td><td><input class="quantity form-control" id="quantity'+i+'" type="number" onkeyup="quantityfunc('+i+')" placeholder="Quantity"></td><td><input class="price form-control" id="cost'+i+'" type="number" onkeyup="pricefunc('+i+')" placeholder="Cost"></td><td style="text-align:center"><span class="subtotal'+i+'" id="subtotal'+i+'">0.00</span></td><td style="text-align:right"><button onclick="delRow('+i+')" class="btn btn-danger btn-circle btn-sm" id="delRow'+i+'" type="button"><span class="material-symbols-outlined">delete</span></button></td></tr></table></div><td>');
+                                                i++;
+                                            });
+
+                                            function delRow(q){
+                                                $('#delRow'+q).closest('tr').remove();
+                                                var k = 0;
+                                                total = 0;
+                                                while (k < i) {
+                                                    if(document.getElementById("subtotal"+k)==null){
+                                                        k++;
+                                                        continue;
+                                                    }
+                                                    total += parseInt(document.getElementById("subtotal"+k).innerHTML);
+                                                    k++;
+                                                }
+                                                document.getElementById("total").innerHTML = total;
+                                            }
+                                            
+                                            function quantityfunc(q) {
+                                                console.log(q);
+                                                var quantityValue = document.getElementById("quantity"+q).value;
+                                                var unitValue = document.getElementById("cost"+q).value;
+                                                if(quantityValue == null && unitValue == null){
+                                                    return;
+                                                }
+                                                document.getElementById("subtotal"+q).innerHTML = quantityValue * unitValue;
+                                                var k = 0;
+                                                total = 0;
+                                                while (k < i) {
+                                                    if(document.getElementById("subtotal"+k)==null){
+                                                        k++;
+                                                        continue;
+                                                    }
+                                                    total += parseInt(document.getElementById("subtotal"+k).innerHTML);
+                                                    k++;
+                                                }
+                                                document.getElementById("total").innerHTML = total;
+                                            }
+
+                                            function pricefunc(q) {
+                                                var quantityValue = document.getElementById("quantity"+q).value;
+                                                var unitValue = document.getElementById("cost"+q).value;
+                                                if(quantityValue == null && unitValue == null){
+                                                    return;
+                                                }
+                                                document.getElementById("subtotal"+q).innerHTML = quantityValue * unitValue;
+                                                var k = 0;
+                                                total = 0;
+                                                while (k < i) {
+                                                    if(document.getElementById("subtotal"+k)==null){
+                                                        k++;
+                                                        continue;
+                                                    }
+                                                    total += parseInt(document.getElementById("subtotal"+k).innerHTML);
+                                                    k++;
+                                                }
+                                                document.getElementById("total").innerHTML = total;
+                                            }
+                                        </script>
+                                      
                             <div class="text-right mt-4">
-                                <button type="button" class="btn btn-secondary" id="prevStep4">Previous</button>
+                                <button type="button" class="btn btn-secondary" id="prevStep6">Previous</button>
                                 <input type="submit" name="submit" class="submit btn btn-primary" value="Submit">
                             </div>
+                            </div>
                         </div>
-                        
+                        </div>
                     </form>
 
                                 <div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog" aria-labelledby="addRoleModalLabel" aria-hidden="true">
@@ -310,7 +433,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" id="saveRoleButton">Save Role</button>
+                                            <button type="submit" class="btn btn-primary" id="saveRoleButton">Save Role</button>
                                         </div>
                                     </div>
                                 </div>
@@ -319,6 +442,7 @@
                         </div>
                     </div>
                 </div>
+                                        </div>
 
             <!-- /.container-fluid -->
 
