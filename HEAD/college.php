@@ -1,4 +1,17 @@
-<html lang="en">
+<?php
+//include necessary files and initialize database connection here
+
+if ($_SERVER["REQUEST_METHOD"]=="POST") {
+    # code...
+    //retrieve data from the form
+    $colleges=$POST["colleges"];
+    $abbreviation=$POST["abbreviation"];
+
+//insert data from the databse
+    $sql="INSERT INTO db_college($colleges, $abbreviation)VALUES(:college,:abbreviation)";
+}
+
+?> <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +22,8 @@
     <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Font Awesome CSS (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -53,7 +68,7 @@
         <li class="nav-item">
           <a class="nav-link" href="user_management.php">
             <i class="bi bi-person-video3"></i>
-            <span> Account Management</span>
+            <span> User Management</span>
           </a>
         </li>
         <li class="nav-item">
@@ -61,6 +76,7 @@
             <i class="fas fa-fw fa-bullhorn"></i>
             <span>Other Users</span>
           </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-tools"></i>
@@ -112,22 +128,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-search fa-fw"></i>
                 </a>
-                <!-- Dropdown - Messages -->
-                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                  <form class="form-inline mr-auto w-100 navbar-search">
-                    <div class="input-group">
-                      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                      <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                          <i class="fas fa-search fa-sm"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </li>
-              <!-- <button onclick="openFullscreen();">Open Fullscreen</button><button onclick="closeFullscreen();">Close Fullscreen</button> -->
-              <!-- Nav Item - User Information -->
+                <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
@@ -145,6 +146,70 @@
             </ul>
           </nav>
           <!-- End of Topbar -->
+          <!-- table modal -->
+          <div class="container">
+            <!--button for create college-->
+            <button type="button" class="btn btn btn-primary" data-toggle="modal" data-target="#addmodal">
+              <i class="fas fa-plus"></i> Create College </button>
+            <br>
+            <table class="table table hover table-bordered">
+              <br>
+              <tr>
+                <th>#</th>
+                <th>College</th>
+                <th>Abbreviation</th>
+                <th>Action</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>College of Information and Communication Technology</td>
+                <td>CICS</td>
+                <td>
+                  <!--button for create college-->
+                  </button>
+                  <button class="btn btn-primary fas fa-edit"></button>
+                  <button class="btn btn-danger fas fa-trash-alt"></button>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="addmodallabel">Add College</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Form Fields-->
+                  <form action="" method="post">
+                    <div class="form-group">
+                      <label>Campus</label>
+                      <select class="form-control" id="selectCampus">
+                        <option>Select Campus</option>
+                        <option>Nasugbu</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Abbreviation</label>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label>College</label>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Create College</button>
+                    </div>
+                  </form>
+                  <!--form ends-->
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
@@ -155,33 +220,8 @@
               <div class="col-lg-6 mb-4"></div>
             </div>
           </div>
-          <div class="row">
-
-                        <div class="col-lg-6">
-
-                            <!-- Default Card Example -->
-                            <div class="card mb-4">
-                                    This card uses Bootstrap's default styling with no utility classes added. Global
-                                    styles are the only things modifying the look and feel of this default card example.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-
-                            <!-- Default Card Example -->
-                            <div class="card mb-4">
-                                    This card uses Bootstrap's default styling with no utility classes added. Global
-                                    styles are the only things modifying the look and feel of this default card example.
-                                </div>
-                            </div>
-                        </div>
-
-                            
           <!-- /.container-fluid -->
         </div>
-    </div>
-    </div>
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">

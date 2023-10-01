@@ -50,10 +50,16 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="user_management.php">
-            <i class="bi bi-person-video3"></i>
-            <span> Account Management</span>
+        <li class="nav-item ">
+          <a class="nav-link" href="#">
+            <i class="fas fa-user "></i>
+            <span> External Affairs Council </span>
+          </a>
+        </li>
+        <li class="nav-item  ">
+          <a class="nav-link" href="#">
+            <i class="fas fa-user"></i>
+            <span>External Affairs Personel</span>
           </a>
         </li>
         <li class="nav-item">

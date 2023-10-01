@@ -232,8 +232,8 @@ $result = $conn->query($sql);
                     <a href='ui-forms.php?edit=" . $row["id"] . "'>
                         <button class='btn btn-primary fas fa-edit'></button>
                     </a>
-                    <a href='delete.php?delete=" . $row["id"] . "class='btn btn-danger fas fa-trash-alt'></button>
-                    <button class='btn btn-secondary fas fa-file'></button>
+                    <a href='delete.php?id=" . $row["id"] . "' class='btn btn-danger'><span class='fas fa-trash-alt'></span></a>
+                    <a class='btn btn-secondary fas fa-file'></a>
                 </td>";
             echo "</tr>";
             $i++;
@@ -315,7 +315,9 @@ $result = $conn->query($sql);
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
-
+<?php
+    include 'footer.php';
+?>
     </body>
 
 </html>

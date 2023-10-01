@@ -49,10 +49,10 @@
             </div>
           </div>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="user_management.php">
           <i class="bi bi-person-video3"></i>
-          <span> User Management</span>
+          <span> Account Management</span>
           </a>
         </li>
         <!-- Nav Item - Users -->
@@ -145,6 +145,79 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
+          <!-- table modal -->
+          <div class="container">
+            <!--button for create college-->
+            <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="h3 mb-0 text-gray-800"></h3>
+                        <div class="d-flex">
+                        <button type="button" class="btn btn btn-primary" data-toggle="modal" data-target="#addmodal">
+              <i class="fas fa-plus"></i> Create Campus </button>
+            </div>
+            </div>
+            
+            <table class="table table hover table-bordered">
+              <br>
+              <tr>
+                <th>#</th>
+                <th>Campus</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
+              <tr>
+                <td>
+                <td>
+                <td>
+                  <!--button for create campus-->
+<!--                   </button>
+                  <button class="btn btn-primary fas fa-edit"></button>
+                  <button class="btn btn-danger fas fa-trash-alt"></button>
+ -->                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="addmodallabel">Add Campus</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Form Fields-->
+                  <form action="" method="post">
+                    <div class="form-group">
+                      <label>Campus</label>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label>Address</label>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                  </form>
+                  <!--form ends-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <!-- Content Row -->
+            <div class="row">
+              <!-- Content Column -->
+              <div class="col-lg-6 mb-4"></div>
+              <div class="col-lg-6 mb-4"></div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
         </div>
           </div>
           <!-- /.container-fluid -->

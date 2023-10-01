@@ -1,3 +1,4 @@
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -6,13 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Unilink</title>
-    <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
   </head>
@@ -29,19 +30,19 @@
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
-        <!-- Nav Item - Dashboard -->
         <li class="nav-item">
           <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-university"></i>
             <span>University Setup</span>
           </a>
-          <div id="collapse1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="office.php">Office</a>
               <a class="collapse-item" href="campus.php">Campus</a>
@@ -50,23 +51,25 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="user_management.php">
-            <i class="bi bi-person-video3"></i>
-            <span> Account Management</span>
+                <li class="nav-item active">
+          <a class="nav-link" href="announcement.php">
+            <i class="bi bi-megaphone"></i>
+            <span>Announcement</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="other_user.php">
-            <i class="fas fa-fw fa-bullhorn"></i>
-            <span>Other Users</span>
+          <a class="nav-link" href="user_management.php">
+<i class="bi bi-person-video3"></i>
+            <span>Account Management</span>
           </a>
+        </li>
+        <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
             <i class="fas fa-tools"></i>
             <span>Other Settings</span>
           </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div id="collapseSettings" class="collapse" aria-labelledby="headingSettings" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="#">Budget Source</a>
               <a class="collapse-item" href="#">External Affairs Agenda</a>
@@ -74,8 +77,6 @@
             </div>
           </div>
         </li>
-        <!-- Heading -->
-        <!-- Nav Item - Pages Collapse Menu -->
         <!-- Divider -->
         <hr class="sidebar-divider">
         <!-- Sidebar Toggler (Sidebar) -->
@@ -126,7 +127,6 @@
                   </form>
                 </div>
               </li>
-              <!-- <button onclick="openFullscreen();">Open Fullscreen</button><button onclick="closeFullscreen();">Close Fullscreen</button> -->
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -135,7 +135,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="ui-profile.php">
+                  <a class="dropdown-item" href="a-profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -147,7 +147,40 @@
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
           <div class="container-fluid">
-            <!-- Page Heading -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h3 class="h3 mb-0 text-gray-800">Announcement</h3>
+              <div class="d-flex">
+                  <a class="btn btn-primary rounded-fill" href="#" role="button" id="addAnnouncementButton">
+                      <i class="fas fa-plus"></i> Add Announcement
+                  </a>
+              </div>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="announcementModal" tabindex="-1" role="dialog" aria-labelledby="announcementModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="announcementModalLabel">Add Announcement</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <!-- Your form content goes here -->
+                          <form>
+                              <!-- Add form fields for your announcement -->
+                          </form>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save Announcement</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+            
             <!-- Content Row -->
             <div class="row">
               <!-- Content Column -->
@@ -155,33 +188,8 @@
               <div class="col-lg-6 mb-4"></div>
             </div>
           </div>
-          <div class="row">
-
-                        <div class="col-lg-6">
-
-                            <!-- Default Card Example -->
-                            <div class="card mb-4">
-                                    This card uses Bootstrap's default styling with no utility classes added. Global
-                                    styles are the only things modifying the look and feel of this default card example.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-
-                            <!-- Default Card Example -->
-                            <div class="card mb-4">
-                                    This card uses Bootstrap's default styling with no utility classes added. Global
-                                    styles are the only things modifying the look and feel of this default card example.
-                                </div>
-                            </div>
-                        </div>
-
-                            
           <!-- /.container-fluid -->
         </div>
-    </div>
-    </div>
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -230,5 +238,13 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script>
+    $(document).ready(function () {
+        $("#addAnnouncementButton").click(function () {
+            $("#announcementModal").modal("show");
+        });
+    });
+</script>
+
   </body>
 </html>

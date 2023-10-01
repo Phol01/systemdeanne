@@ -14,10 +14,10 @@ if ($conn->connect_error) {
 }
 
 // Get the form ID to delete from the query parameter
-    $i = $_GET["delete"];
+    $id = $_GET["id"];
     $activity_representatives_id = array();
 
-    $sql = "SELECT * FROM `activity_representatives` WHERE `activityform_id` LIKE '$i'";
+    $sql = "SELECT * FROM `activity_representatives` WHERE `activityform_id` LIKE '$id'";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         array_push($activity_representatives_id, $row['id']);
@@ -29,10 +29,10 @@ if ($conn->connect_error) {
         $sql = "DELETE FROM `activity_representatives_responsibilities` WHERE `activity_representatives_id` LIKE '$value'";
         $conn->query($sql); 
     }
-    $sql = "DELETE FROM `representatives` WHERE id LIKE '$id'";
+    $sql = "DELETE FROM `activity_representatives` WHERE `activityform_id` LIKE '$id'";
     $conn->query($sql);
 
-    $sql = "DELETE FROM `budget` WHERE id LIKE '$id'";
+    $sql = "DELETE FROM `budget` WHERE `activityform_id` LIKE '$id'";
     $conn->query($sql);
 
     $sql = "DELETE FROM `activityform` WHERE `id` LIKE '$id'";
@@ -44,3 +44,5 @@ if ($conn->connect_error) {
 mysqli_close($conn);
 
 ?>
+
+

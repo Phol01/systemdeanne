@@ -77,6 +77,7 @@
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
       </ul>
+
       <!-- End of Sidebar -->
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
@@ -123,7 +124,7 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <form method="post" action="forms.php">
+          <form method="post" action="forms.php" id="inputForm">
           <div class="container-fluid">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -324,90 +325,11 @@
                           </tbody>
                         </table>
                       </div>
-                      <hr>
-                      <!-- table Asst.Project -->
-                      <div id="role2">
+                      <div id="role3">
                         <table class="table header-border table-responsive-sm">
                           <div class="d-flex justify-content-between align-items-center flex-wrap">
                             <div class="col-md-11">
-                              <input class="form-control" type="text" id="role_description_2" value="Asst. Project Leader/s" disabled>
-                            </div>
-                            <div class="md-1" style="padding-right: 30px;">
-                              <button type="button" name="addRole" onclick="removeRole(2)" class="btn btn-danger shadow btn-circle btn-sm">
-                                <i class="fas fa-trash"></i>
-                              </button>
-                            </div>
-                          </div>
-                          <thead>
-                            <tr>
-                              <th class="col-md-5" style="text-align: left;">Name</th>
-                              <th class="col-md-6" style="text-align: left;">Designation</th>
-                              <th class="col-md-2" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(2)">                                  <i class="fas fa-user-plus"></i>
-                                </button>
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" onclick="addCustomMember(2)">
-                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                                </button>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="member2"></tbody>
-                        </table>
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th class="col-md-11" style="text-align: left;">Responsibility</th>
-                              <th class="col-md-1" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" onclick="openModal(2)" data-target="#responsibility_modal_2">
-                                  <i class="fas fa-plus"></i>
-                                </button>
-                                <div class="modal fade" id="responsibility_modal_2" tabindex="-1" role="dialog" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" style="font-size:23px">Add Project Member/s Responsibility</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">×</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body" style="padding: 0.875rem">
-                                        <div class="card-body">
-                                          <div class="table-responsive">
-                                            <table class="table header-border table-responsive-sm">
-                                              <thead>
-                                                <tr>
-                                                  <th class="col-md-4" style="text-align: left;">Role</th>
-                                                  <th class="col-md-7" style="text-align: left;">Resposibility</th>
-                                                  <th class="col-md-2" style="text-align: right;">Action</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody id="responsibility_list_2">
-                                                <!-- List Responsibility of Leader -->
-                                              </tbody>
-                                            </table>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" onclick="addCustomResponsibility(2)">
-                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                                </button>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="added_responsibility_list_2">
-                            <!-- Added Responsibility of Leader -->
-                          </tbody>
-                        </table>
-                    </div>
-                    <hr>
-                    <div id="role3">
-                        <table class="table header-border table-responsive-sm">
-                          <div class="d-flex justify-content-between align-items-center flex-wrap">
-                            <div class="col-md-11">
-                              <input class="form-control" type="text" id="role_description_3" value="Project Coordinator/s or Staff" disabled>
+                              <input class="form-control" type="text" id="role_description_3" value="Project Member/s" disabled>
                             </div>
                             <div class="md-1" style="padding-right: 30px;">
                               <button type="button" name="addRole" onclick="removeRole(3)" class="btn btn-danger shadow btn-circle btn-sm">
@@ -582,6 +504,8 @@
     <!-- /.container-fluid -->
     </div>
   </form>
+   <div id="report" class="mt-4"></div>
+   </div>
     <!-- End of Main Content -->
     <!-- Footer -->
     <footer class="sticky-footer bg-white">
@@ -624,3 +548,4 @@
     include 'footer.php';
 ?>
 <script src="footer.js"></script>
+<script src="generate_report.js"></script>

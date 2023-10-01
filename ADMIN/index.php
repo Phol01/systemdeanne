@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Unilink</title>
-    <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -21,8 +21,8 @@
       <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index2.php">
-          <img src="..\imgs\BSU.png" width="50" height="45">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+          <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UNILINK</div>
         </a>
         <!-- Divider -->
@@ -49,17 +49,16 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="user_management.php">
-          <i class="bi bi-person-video3"></i>
-          <span> User Management</span>
+                <li class="nav-item">
+          <a class="nav-link" href="announcement.php">
+            <i class="bi bi-megaphone"></i>
+            <span>Announcement</span>
           </a>
         </li>
-        <!-- Nav Item - Users -->
         <li class="nav-item">
-          <a class="nav-link" href="other_user.php">
-            <i class="fas fa-bullhorn"></i>
-            <span>Other Users</span>
+          <a class="nav-link" href="announcement.php">
+<i class="bi bi-person-video3"></i>
+            <span>Account Management</span>
           </a>
         </li>
         <!-- Nav Item - Pages Collapse Menu -->

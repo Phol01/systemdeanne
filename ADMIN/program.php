@@ -51,7 +51,7 @@
         <li class="nav-item">
           <a class="nav-link" href="user_management.php">
             <i class="bi bi-person-video3"></i>
-            <span> User Management</span>
+            <span> Account Management</span>
           </a>
         </li>
         <li class="nav-item">
